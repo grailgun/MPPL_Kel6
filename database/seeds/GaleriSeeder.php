@@ -11,10 +11,14 @@ class GaleriSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('galeri')->insert([
-            'portofolio_id' => rand(1111, 9999),
-            'gambar' => '1',
-            'deskripsi_gambar' => Str::random(30),
-        ]);
+        for ($i=0; $i < 20; $i++) { 
+            # code...
+            DB::table('galeri')->insert([
+                'portofolio_id' => rand(1, 15),
+                'gambar' => '1',
+                'deskripsi_gambar' => Str::random(30),
+            ]);
+        }
+        
     }
 }

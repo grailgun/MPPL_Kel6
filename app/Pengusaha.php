@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pengusaha extends Model
 {
+    protected $table = 'pengusaha';
     //
     protected $fillable = [
         'nama_toko', 'nama_pemilik', 'foto_toko', 'nomor_telepon'
@@ -18,7 +19,7 @@ class Pengusaha extends Model
 
     public function Portofolio()
     {
-        return $this->hasMany('App\Portofolio');
+        return $this->hasOne('App\Portofolio');
     }
 
     public function Produk()

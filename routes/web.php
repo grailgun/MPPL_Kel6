@@ -15,3 +15,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'PengusahaController@index');
 Route::get('/pengusaha/{id}', 'PengusahaController@show');
+
+//Formulir Step 1 - Profil depan
+Route::get('/formulir-1', 'FormController@FormPage1');
+Route::post('/formulir/step-1', 'FormController@PostFormStep1');
+
+//Formulir Step 2 - Portofolio dan galeri
+Route::get('/formulir-2', 'FormController@FormPage2');
+Route::post('/formulir/step-2', 'FormController@PostFormStep2');
+
+//Formulir step 3 - Alamat
+Route::get('/formulir-3', 'FormController@FormPage3');
+Route::post('/formulir/step-3', 'FormController@PostFormStep3');
+
+//Formulir step 4 - Produk
+Route::get('/formulir-4', 'FormController@FormPage4');
+Route::post('/formulir/store', 'FormController@PostFormStore');

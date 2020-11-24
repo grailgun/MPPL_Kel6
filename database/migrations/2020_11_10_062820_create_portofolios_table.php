@@ -18,8 +18,8 @@ class CreatePortofoliosTable extends Migration
             $table->unsignedBigInteger('pengusaha_id');
 
             $table->text('deskripsi');
-            $table->string('kelebihan');
-            $table->string('kekurangan');
+            $table->string('kelebihan')->nullable();
+            $table->string('kekurangan')->nullable();
 
             $table->timestamps();
         });

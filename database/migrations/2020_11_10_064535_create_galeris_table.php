@@ -17,8 +17,7 @@ class CreateGalerisTable extends Migration
             $table->id();
             $table->unsignedBigInteger('portofolio_id');
             
-            $table->binary('gambar');
-            $table->text('deskripsi_gambar');
+            $table->string('gambar');
 
             $table->timestamps();
         });

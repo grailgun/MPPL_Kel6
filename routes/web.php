@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/', 'PengusahaController@index');
 Route::get('/pengusaha/{id}', 'PengusahaController@show');
 
@@ -31,3 +33,14 @@ Route::post('/formulir/step-3', 'FormController@PostFormStep3');
 //Formulir step 4 - Produk
 Route::get('/formulir-4', 'FormController@FormPage4');
 Route::post('/formulir/store', 'FormController@PostFormStore');
+
+
+// Admin Login //
+Route::get('admin/login', 'Auth\AdminAuthController@getLogin')->name('admin.login');
+Route::post('admin/login', 'Auth\AdminAuthController@postLogin');
+
+//Middleware admin
+Route::middleware('auth:admin')->group(function(){
+    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin/logout', 'Auth\AdminAuthController@postLogout');
+});

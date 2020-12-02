@@ -12,7 +12,7 @@ class AdminController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth:admin')->except('getOut');
+        $this->middleware('auth:admin');
     }
 
     public function index(){
@@ -20,9 +20,5 @@ class AdminController extends Controller
         $pengusaha = Pengusaha::all();
 
         return view('auth.admin.index', compact('admin', 'pengusaha'));
-    }
-
-    public function getOut(){
-        return redirect('/');
     }
 }

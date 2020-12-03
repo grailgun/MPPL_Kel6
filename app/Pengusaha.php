@@ -9,7 +9,11 @@ class Pengusaha extends Model
     protected $table = 'pengusaha';
     //
     protected $fillable = [
-        'nama_toko', 'nama_pemilik', 'foto_toko', 'nomor_telepon'
+        'nama_toko', 'nama_pemilik', 'nomor_telepon', 'foto_toko'
+    ];
+
+    protected $hidden = [
+        'confirmed'
     ];
 
     public function Alamat()

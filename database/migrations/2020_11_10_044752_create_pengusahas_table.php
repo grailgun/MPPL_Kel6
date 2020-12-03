@@ -15,10 +15,11 @@ class CreatePengusahasTable extends Migration
     {
         Schema::create('pengusaha', function (Blueprint $table) {
             $table->id();
+            $table->boolean('confirmed') -> default(false);
 
             $table->string('nama_toko');
             $table->string('nama_pemilik');
-            $table->binary('foto_toko');
+            $table->string('foto_toko')->nullable();
             $table->string('nomor_telepon');
 
             $table->timestamps();

@@ -13,7 +13,6 @@
 
     <h2> {{ $portofolio->deskripsi }} </h2>
 
-    
 
 </body>
 </html>

@@ -12,6 +12,10 @@ class Portofolio extends Model
         'deskripsi', 'kelebihan', 'kekurangan'
     ];
 
+    public function Pengusaha(){
+        return $this->belongsTo('App\Pengusaha');
+    }
+
     public function Galeries()
     {
         return $this->hasMany('App\Galeri');

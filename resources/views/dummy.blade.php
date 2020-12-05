@@ -1,6 +1,7 @@
 <h1>
     All Pengusaha
 </h1>
+<a href="/formulir-1"> BERGABUNG </a>
 
 <table border="1px">
     <thead>

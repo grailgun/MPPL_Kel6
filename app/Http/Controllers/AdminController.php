@@ -21,4 +21,24 @@ class AdminController extends Controller
 
         return view('auth.admin.index', compact('admin', 'pengusaha'));
     }
+
+    public function showProfile($id){
+        $pengusaha = Pengusaha::find($id);
+
+        if($pengusaha == null) {
+            return redirect()
+                ->back()
+                ->withErrors(["Incorrect user login details!"]);
+        }
+
+        return view('auth.admin.profil', compact('pengusaha'));
+    }
+
+    public function approve($id){
+        $pengusaha = Pengusaha::find($id);
+        $pengusaha->confirmed = 2;
+        $pengusaha->save();
+
+        return redirect('/admin');
+    }
 }

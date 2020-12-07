@@ -43,4 +43,6 @@ Route::post('admin/login', 'Auth\AdminAuthController@postLogin');
 Route::middleware('auth:admin')->group(function(){
     Route::get('/admin', 'AdminController@index');
     Route::get('/admin/logout', 'Auth\AdminAuthController@postLogout');
+    Route::get('/admin/profil-pengusaha/{id}', 'AdminController@showProfile');
+    Route::get('/admin/approve/{id}', 'AdminController@approve');
 });

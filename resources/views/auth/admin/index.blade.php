@@ -8,7 +8,7 @@
     <h1 class="text-center"> Welcome {{$admin->name}} </h1>
     <h2 class="text-center"><a href="/admin/logout">Logout</a></h2>
 
-    <table class="table table-bordered table-hover table-striped">
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Nama Toko</th>
@@ -20,7 +20,13 @@
         </thead>
         <tbody>
             @foreach($pengusaha as $p)
-                <tr>
+                @if ($p->confirmed != 0)
+                    {{$danger = "table-success"}}
+                @else
+                    {{$danger = "table-danger"}}
+                @endif
+
+                <tr class= {{$danger}} >
                     <td>{{ $p->nama_toko }}</td>
                     <td>{{ $p->nama_pemilik }}</td>
                     <td>{{ $p->nomor_telepon }} </td>
@@ -28,7 +34,11 @@
                         <a href="/admin/profil-pengusaha/ {{$p->id}}" class="btn btn-primary">Profil</a>
                     </td>
                     <td>
-                        {{$p->confirmed}}
+                        @if ($p->confirmed != 0)
+                            Terkonfirmasi
+                        @else
+                            Belum terkonfirmasi
+                        @endif
                     </td>
                 </tr>
             @endforeach

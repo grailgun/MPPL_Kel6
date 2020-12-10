@@ -13,20 +13,30 @@ use App\Alamat;
 
 class FormController extends Controller
 {
-    public function FormPage1(){
-        return view('formulir.form1');
+    public function FormPage1(Request $request){
+        $pengusaha = $request->session()->get('pengusaha');
+        return view('formulir.form1', compact('pengusaha'));
     }
 
     public function FormPage2(Request $request){
-        return view('formulir.form2');
+        $portofolio = $request->session()->get('portofolio');
+        return view('formulir.form2', compact('portofolio'));
     }
 
     public function FormPage3(Request $request){
-        return view('formulir.form3');
+        $alamat = $request->session()->get('alamat');
+        return view('formulir.form3', compact('alamat'));
     }
 
     public function FormPage4(Request $request){
         return view('formulir.form4');
+    }
+
+    public function removeImage1(Request $request)
+    {
+        $pengusaha = $request->session()->get('pengusaha');
+        $pengusaha->foto_toko = null;
+        return view('formulir.form1',compact('pengusaha'));
     }
 
     public function PostFormStep1(Request $request){
@@ -37,7 +47,7 @@ class FormController extends Controller
             'nomor_telepon' => 'required|numeric|min:10',
         ]);
 
-        if(empty($request->session()->get('profil'))){
+        if(empty($request->session()->get('pengusaha'))){
             $pengusaha = new Pengusaha();
             $pengusaha->fill($requestData);
             $request->session()->put('pengusaha', $pengusaha);
@@ -160,7 +170,7 @@ class FormController extends Controller
         ]);
 
         $pengusaha->Produk()->createMany($produk_data);
-
+        $request->session()->flush();
         return redirect('/');
     }
 }

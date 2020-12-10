@@ -21,6 +21,7 @@ Route::get('/pengusaha/{id}', 'PengusahaController@show');
 //Formulir Step 1 - Profil depan
 Route::get('/formulir-1', 'FormController@FormPage1');
 Route::post('/formulir/step-1', 'FormController@PostFormStep1');
+Route::post('/formulir-1/remove-image', 'FormController@removeImage1');
 
 //Formulir Step 2 - Portofolio dan galeri
 Route::get('/formulir-2', 'FormController@FormPage2');

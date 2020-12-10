@@ -17,6 +17,33 @@
         <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"></script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{asset('bootstrap-4.5.3/dist/js/bootstrap.js')}}"></script>
         <script src="{{asset('js/jquery-3.5.1.min.js')}}"></script>
-        </body>
-    </html>
+        <script>
+            $('.addRow').on('click', function(){
+                addRow();
+            });
+        
+            function addRow(){
+                var tr = '<tr>'+
+                        '<td>'+
+                            '<input type="text" name="nama_produk[]" class="form-control-sm" />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="text" name="deskripsi_produk[]" class="form-control-sm" />'+
+                        '</td>'+
+                        '<td>'+
+                            '<input type="tel" name="harga_produk[]" class="form-control-sm" />'+
+                        '</td>'+
+                        '<td style="text-align: center">'+
+                            '<a href="#" class="btn btn-danger removeProduct">-</a>'+
+                        '</td>'+
+                    '</tr>';
+                $('tbody').append(tr);
+            }
+
+            $('tbody').on('click', '.removeProduct', function(){
+                $(this).parent().parent().remove();
+            });
+        </script>
+    </body>
+</html>
             

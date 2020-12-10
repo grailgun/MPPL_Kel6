@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-
-Route::get('/', 'PengusahaController@index');
+Route::get('/',function(){return view('welcome');});
+//Route::get('/', 'PengusahaController@index');
 Route::get('/pengusaha/{id}', 'PengusahaController@show');
 
 //Formulir Step 1 - Profil depan

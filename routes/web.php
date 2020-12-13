@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/',function(){return view('welcome');});
+Route::get('/',function(){return view('index');});
+Route::get('/profil',function(){return view('profil');});
 //Route::get('/', 'PengusahaController@index');
 Route::get('/pengusaha/{id}', 'PengusahaController@show');
 

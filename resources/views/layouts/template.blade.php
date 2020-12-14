@@ -44,6 +44,27 @@
                 $(this).parent().parent().remove();
             });
         </script>
+        <script>
+            $('.addImage').on('click', function(){
+                addImage();
+            });
+        
+            function addImage(){
+                var tr = '<tr>'+
+                        '<td>'+
+                            '<input type="file" name="galeri[]" class="form-control-file" />'+
+                        '</td>'+
+                        '<td style="text-align: center">'+
+                            '<a href="#" class="btn btn-danger removeImage">-</a>'+
+                        '</td>'+
+                    '</tr>';
+                $('tbody').append(tr);
+            }
+
+            $('tbody').on('click', '.removeImage', function(){
+                $(this).parent().parent().remove();
+            });
+        </script>
     </body>
 </html>
             

@@ -36,7 +36,7 @@ class AdminController extends Controller
 
     public function approve($id){
         $pengusaha = Pengusaha::find($id);
-        $pengusaha->confirmed = 2;
+        $pengusaha->confirmed = 1;
         $pengusaha->save();
 
         return redirect('/admin');

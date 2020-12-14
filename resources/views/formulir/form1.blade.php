@@ -29,22 +29,25 @@
             
             <div class="form-group">
                 <label>Nama Toko</label>
-                <input type="text" class="form-control" name="nama_toko" value={{ (empty($pengusaha->nama_toko) ? '' : $pengusaha->nama_toko) }}>
+                <input type="text" class="form-control" name="nama_toko" value={{ (empty($pengusaha->nama_toko) ? old('nama_toko') : $pengusaha->nama_toko) }}>
             </div>
             
             <div class="form-group">
                 <label>Nama Pemilik</label>
-                <input type="text" class="form-control" name="nama_pemilik" value={{ (empty($pengusaha->nama_pemilik) ? '' : $pengusaha->nama_pemilik) }}>
+                <input type="text" class="form-control" name="nama_pemilik" value={{ (empty($pengusaha->nama_pemilik) ? old('nama_pemilik') : $pengusaha->nama_pemilik) }}>
             </div>
     
             <div class="form-group">
                 <label>Nomor Telepon</label>
-                <input type="tel" class="form-control" name="nomor_telepon" value="{{ (empty($pengusaha->nomor_telepon) ? '' : $pengusaha->nomor_telepon) }}">
+                <input type="tel" class="form-control" name="nomor_telepon" value="{{ (empty($pengusaha->nomor_telepon) ? old('nomor_telepon') : $pengusaha->nomor_telepon) }}">
             </div>
             
             <div class="form-group">
                 <b>Foto Profil</b><br/>
                 <input type="file" {{ (!empty($pengusaha->foto_toko)) ? "disabled" : ''}} class="form-control-file" name="foto_toko">
+                @if (!empty($pengusaha->foto_toko))
+                    <img src="<?php echo asset("foto_toko/{$pengusaha->nama_toko}/{$pengusaha->foto_toko}")?>" alt="">    
+                @endif
             </div>
 
             <div class="d-flex flex-row-reverse">

@@ -29,23 +29,39 @@
             
             <div class="form-group">
                 <label>Deskripsi</label>
-                <textarea class="form-control" name="deskripsi">{{ empty($portofolio->deskripsi) ? '' : $portofolio->deskripsi }}</textarea>
+                <textarea class="form-control" name="deskripsi">{{ empty($portofolio->deskripsi) ? old('deskripsi') : $portofolio->deskripsi }}</textarea>
             </div>
             
             <div class="form-group">
                 <label>Kelebihan</label>
-                <textarea class="form-control" name="kelebihan">{{ empty($portofolio->kelebihan) ? '' : $portofolio->kelebihan }}</textarea>
+                <textarea class="form-control" name="kelebihan">{{ empty($portofolio->kelebihan) ? old('kelebihan') : $portofolio->kelebihan }}</textarea>
             </div>
         
             <div class="form-group">
                 <label>Kekurangan</label>
-                <textarea class="form-control" name="kekurangan">{{ empty($portofolio->kekurangan) ? '' : $portofolio->kekurangan }}</textarea>
+                <textarea class="form-control" name="kekurangan">{{ empty($portofolio->kekurangan) ? old('kekurangan') : $portofolio->kekurangan }}</textarea>
             </div>
-        
-            {{-- <div class="form-group">
-                <label for="files">Galeri:</label> <br>
-                <input type="file" name="galeri[]" multiple><br>
-            </div> --}}
+            
+            <table class="table table-bordered table-striped" id="product_table">
+                <thead>
+                    <tr>
+                        <th>Gambar</th>
+                        <th style="text-align: center;">
+                            <a href="#" class="btn btn-success addImage">+</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="file" name="galeri[]" class="form-control-file" />
+                        </td>
+                        <td style="text-align: center">
+                            {{-- <a href="#" class="btn btn-danger removeImage">-</a> --}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         
             <div class="d-flex flex-row-reverse">
                 <input type="submit" value="Next" class="btn btn-primary mx-2">

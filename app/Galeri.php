@@ -9,7 +9,7 @@ class Galeri extends Model
     protected $table = 'galeri';
 
     protected $fillable = [
-        'gambar', 'deskripsi_gambar'
+        'gambar'
     ];
 
     public function Portofolio()

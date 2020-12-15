@@ -1,54 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <title>Formulir Buka Usaha</title>
-</head>
-<body>
-    <div class="row">
-		<div class="container">
-			<h2 class="text-center my-5">Isi Portofolio</h2>
-			
-			<div class="col-lg-8 mx-auto my-5">	
+@extends('layouts.template')
+
+@section('body')
+<div class="container">
+    <header class="w-full my-3">
+        <ul class="nav justify-content-between">
+            <li class="nav-item">
+                <a href="/" aria-label="Product">
+                    <h1 style="font-size: 1.5em; color: orange;">
+                        Cari Sablonan
+                    </h1>
+                </a>
+            </li>
+        </ul>
+    </header>
+
+    <div class="mx-auto w-75 mb-5">	
  
-				@if(count($errors) > 0)
-				<div class="alert alert-danger">
-					@foreach ($errors->all() as $error)
-					{{ $error }} <br/>
-					@endforeach
-				</div>
-				@endif
- 
-				<form action="/formulir/step-2" method="POST" enctype="multipart/form-data">
-					{{ csrf_field() }}
-                    
-                    <div class="form-group">
-                        <label>Deskripsi</label>
-                        <textarea class="form-control" name="deskripsi" value="{{ old('deskripsi') }}"></textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Kelebihan</label>
-                        <textarea class="form-control" name="kelebihan" value="{{ old('kelebihan') }}"></textarea>
-                    </div>
+        @if(count($errors) > 0)
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+            {{ $error }} <br/>
+            @endforeach
+        </div>
+        @endif
+    
+        <form action="/formulir/step-2" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            
+            <div class="form-group">
+                <label>Deskripsi</label>
+                <textarea class="form-control" name="deskripsi">{{ empty($portofolio->deskripsi) ? old('deskripsi') : $portofolio->deskripsi }}</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Kelebihan</label>
+                <textarea class="form-control" name="kelebihan">{{ empty($portofolio->kelebihan) ? old('kelebihan') : $portofolio->kelebihan }}</textarea>
+            </div>
+        
+            <div class="form-group">
+                <label>Kekurangan</label>
+                <textarea class="form-control" name="kekurangan">{{ empty($portofolio->kekurangan) ? old('kekurangan') : $portofolio->kekurangan }}</textarea>
+            </div>
+            
+            <table class="table table-bordered table-striped" id="product_table">
+                <thead>
+                    <tr>
+                        <th>Gambar</th>
+                        <th style="text-align: center;">
+                            <a href="#" class="btn btn-success addImage">+</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <input type="file" name="galeri[]" class="form-control-file" />
+                        </td>
+                        <td style="text-align: center">
+                            {{-- <a href="#" class="btn btn-danger removeImage">-</a> --}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        
+            <div class="d-flex flex-row-reverse">
+                <input type="submit" value="Next" class="btn btn-primary mx-2">
+                <a href="/formulir-1" class="btn btn-primary-mx-2">Prev</a>
+            </div>
 
-                    <div class="form-group">
-                        <label>Kekurangan</label>
-                        <textarea class="form-control" name="kekurangan" value="{{ old('kekurangan') }}"></textarea>
-                    </div>
+        </form>
+    
+    </div>
 
-                    {{-- <div class="form-group">
-                        <label for="files">Galeri:</label> <br>
-                        <input type="file" name="galeri" multiple><br>
-                    </div> --}}
-
-                    <input type="submit" value="Next" class="btn btn-primary">
-                </form>
-
-			</div>
-		</div>
-	</div>            
-
-</body>
-</html>
+</div>
+@endsection  

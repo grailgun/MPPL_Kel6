@@ -9,24 +9,53 @@ use App\Pengusaha;
 use App\Portofolio;
 use App\Galeri;
 use App\Produk;
+use Image;
+use File;
 use App\Alamat;
 
 class FormController extends Controller
 {
-    public function FormPage1(){
-        return view('formulir.form1');
+    public function FormPage1(Request $request){
+        $pengusaha = $request->session()->get('pengusaha');
+        return view('formulir.form1', compact('pengusaha'));
     }
 
     public function FormPage2(Request $request){
-        return view('formulir.form2');
+        $portofolio = $request->session()->get('portofolio');
+        $pengusaha = $request->session()->get('pengusaha');
+        $galeri = $request->session()->get('galeri');
+        if(!empty($galeri)){
+            //Proses delete image dari si file
+            //dd($galeri[0][1]);
+            for($i=0; $i < count($galeri[0]); $i++){
+                $path = public_path().'/foto_toko/'.$pengusaha->nama_toko.'/'.$galeri[0][$i];
+                if(File::exists($path)){
+                    File::delete($path);
+                }
+            }
+            $request->session()->forget('galeri');
+        }
+        //dd('Empty');
+        return view('formulir.form2', compact('portofolio'));
     }
 
     public function FormPage3(Request $request){
-        return view('formulir.form3');
+        $alamat = $request->session()->get('alamat');
+        return view('formulir.form3', compact('alamat'));
     }
 
     public function FormPage4(Request $request){
         return view('formulir.form4');
+    }
+
+    public function removeImage1(Request $request){
+        $pengusaha = $request->session()->get('pengusaha');
+        $path = public_path().'/foto_toko/'.$pengusaha->nama_toko.'/'.$pengusaha->foto_toko;
+        if(File::exists($path)){
+            File::delete($path);
+        }
+        $pengusaha->foto_toko = null;
+        return view('formulir.form1',compact('pengusaha'));
     }
 
     public function PostFormStep1(Request $request){
@@ -37,7 +66,7 @@ class FormController extends Controller
             'nomor_telepon' => 'required|numeric|min:10',
         ]);
 
-        if(empty($request->session()->get('profil'))){
+        if(empty($request->session()->get('pengusaha'))){
             $pengusaha = new Pengusaha();
             $pengusaha->fill($requestData);
             $request->session()->put('pengusaha', $pengusaha);
@@ -54,12 +83,19 @@ class FormController extends Controller
             ]);
 
             $avatar = $request->file('foto_toko');
-            $path = 'foto_toko'.'/'.$request->nama_toko;
             $basename = Str::random(10);
-            $filename = $basename .".". $avatar->getClientOriginalExtension();
+            $filename = $basename .'.'.$avatar->getClientOriginalExtension();
             
-            $avatar->move($path, $filename);
-            //$avatar->storeAs($path, $filename);
+            $path = public_path().'/foto_toko/'.$request->nama_toko;
+
+            if (!File::exists($path)) {
+                File::makeDirectory($path);
+            }
+
+            $image = Image::make($avatar);
+            $image->resize(200,200, function($constraint){
+                $constraint->aspectRatio();
+            })->save($path.'/'.$filename, 80);
 
             $pengusaha = $request->session()->get('pengusaha');
             $pengusaha->foto_toko = $filename;
@@ -75,6 +111,45 @@ class FormController extends Controller
             'kelebihan' => 'required',
             'kekurangan' => 'required',
         ]);
+
+        $pengusaha = $request->session()->get('pengusaha');
+        if($request->hasfile('galeri')){
+            $this->validate($request, [
+                'galeri.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096'
+            ]);
+
+            foreach($request->galeri as $image){
+                $basename = Str::random(20);
+                $filename = $basename .'.'.$image->getClientOriginalExtension();
+                
+                $path = public_path().'/foto_toko/'.$pengusaha->nama_toko;
+
+                if (!File::exists($path)) {
+                    File::makeDirectory($path);
+                }
+
+                $img = Image::make($image);
+                $img->resize(1024, null, function($constraint){
+                    $constraint->aspectRatio();
+                })->save($path.'/'.$filename, 80);
+
+                // $data = array(
+                //     'gambar' => $filename
+                // );
+                $galeriImage[] = $filename;
+            }
+            
+            if(empty($request->session()->get('galeri'))){
+                $galeri = new Galeri();
+                $galeri->fill($galeriImage);
+                $request->session()->push('galeri', $galeriImage);
+            }
+            else {
+                $galeri = $request->session()->get('galeri');
+                $galeri -> fill($galeriImage);
+                $request -> session()->push('galeri', $galeriImage);
+            }
+        }
 
         if(empty($request->session()->get('portofolio'))){
             $portofolio = new Portofolio();
@@ -125,6 +200,7 @@ class FormController extends Controller
         $pengusaha = $request->session()->get('pengusaha');
         $portofolio = $request->session()->get('portofolio');
         $alamat = $request->session()->get('alamat');
+        $galeri = $request->session()->get('galeri');
 
         for ($i=0; $i < count($requestData['nama_produk']); $i++) { 
             # code...
@@ -135,7 +211,15 @@ class FormController extends Controller
             );
             $produk_data[] = $data;
         }
-        //dd($produk_data);
+
+        for ($i=0; $i < count($galeri[0]); $i++) { 
+            # code...
+            $data = array(
+                'gambar' => $galeri[0][$i]
+            );
+            $galeriImg[] = $data;
+        }    
+        
 
         $pengusaha = Pengusaha::create([
             'nama_toko' => $pengusaha->nama_toko,
@@ -160,7 +244,8 @@ class FormController extends Controller
         ]);
 
         $pengusaha->Produk()->createMany($produk_data);
-
+        $pengusaha->portofolio->Galeries()->createMany($galeriImg);
+        $request->session()->flush();
         return redirect('/');
     }
 }

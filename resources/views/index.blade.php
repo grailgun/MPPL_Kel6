@@ -24,7 +24,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link btn tombol-penjual" href="#">Jadi Penjual</a>
+                <a class="nav-item nav-link btn tombol-penjual" href="/formulir-1">Jadi Penjual</a>
           </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
           </div>
           <div class="form-group col-md-3">
             <label><br><br><br></label>
-            <button type="submit" class="btn tombol-cari" input style="height:75px; width:320px;"> Cari </button>
+            <button type="submit" class="btn tombol-cari" input style="height:75px; width:250px;"> Cari </button>
           </div>
         </div>
       </div>
@@ -74,11 +74,78 @@
 
 
 
+  <h2 class="pl-3 my-3 mx-5"><u>Paling Banyak Dikunjungi</u></h2>
+<!--1row contain 3 card-->
+<div class="row row-cols-1 row-cols-md-4 mx-5 panel">
+    <div class="col mb-4">
+        <div class="card h-100 border-dark">
+            <img src="{{asset('assets/img/gambar1.jpeg')}}" class="card-img-top" alt="gambar product">
+            <div class="card-body">
+                <h5 class="card-title">Kategori: A <br>Sablon A</h5>
+                <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
+                <a href="/profil" class="btn btn-danger">Kunjungi Profil</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> Mulai dari Rp.35.000</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col mb-4">
+        <div class="card h-100 border-dark">
+            <img src="{{asset('assets/img/gambarkaos.jpeg')}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Kategori: A <br>Sablon H</h5>
+                <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
+                <a href="/profil" class="btn btn-danger">Kunjungi Profil</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> Mulai dari Rp.38.000</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col mb-4">
+        <div class="card h-100 border-dark">
+            <img src="{{asset('assets/img/gambar3.jpeg')}}" class="card-img-top" alt="gambar 1">
+            <div class="card-body">
+                <h5 class="card-title">Kategori: A <br>Sablon F</h5>
+                <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
+                <a href="/profil" class="btn btn-danger">Kunjungi Profil</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> Mulai dari Rp.39.000</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col mb-4">
+        <div class="card h-100 border-dark">
+            <img src="{{asset('assets/img/gambar4.jpeg')}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Kategori: F <br>Sablon D</h5>
+                <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
+                <a href="/profil" class="btn btn-danger">Kunjungi Profil</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> Mulai dari Rp.38.000</small>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
 
 
   <!-- Footer -->
-  <div class="row footer justify-content-center">
-    <div class="col-8">
+  <div class="row footer-index justify-content-center">
+    <div class="col">
       <p><br><br></p>
       <p> Hubungi Cari Sablon</p>
       <p> carisablon@gmail.com</p>
@@ -88,7 +155,6 @@
       <p> Daerah Khusus Ibukota Jakarta, Indonesia, 13520</p>
       <p><br></p>
     </div>
-
   </div>
 
 

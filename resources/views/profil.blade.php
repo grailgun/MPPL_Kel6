@@ -12,10 +12,11 @@
 
     <link rel="stylesheet" href="{{asset('/assets/css/CSS-sendiri.css')}}">
 
-    <title>Cari Sablon</title>
+    <title> {{$pengusaha->nama_toko}} </title>
   </head>
   <body>
 
+  {{-- Profil Header --}}
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-profil">
           <a class="navbar-brand" href="/">Cari Sablon</a>
@@ -23,23 +24,29 @@
               <span class="navbar-toggler-icon"></span>
           </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <form class="form-inline my-2 my-lg-0">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari</button>
-          </form>
-      </div>
-      </nav>
+        </form>
     </div>
+    </nav>
+  </div>
 
     <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <h3><span>Kami akan menerima segala desain dengan hasil yang memuaskan<span></h3>
+        {{-- <h3><span>Kami akan menerima segala desain dengan hasil yang memuaskan<span></h3> --}}
         <div class="media">
-          <img src="{{asset('assets/img/profile-photo-a.png')}}" class="mr-3 img-rounded" alt="foto-profil">
+
+          @if(!empty($pengusaha->foto_toko))
+          <img src={{ URL::asset("foto_toko/{$pengusaha->nama_toko}/{$pengusaha->foto_toko}") }} class="mr-3 img-rounded" alt="foto-profil">
+          @else
+            <img src="{{asset('assets/img/profile-photo-a.png')}}" class="mr-3 img-rounded" alt="foto-profil">
+          @endif
+
           <div class="media-body">
-          <h5 class="nama-sablon">Sablon C</h5>
+            <h1 class="nama-sablon"> {{$pengusaha->nama_toko}} </h1>
           </div>
         </div>
         
@@ -50,15 +57,22 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
           </ol>
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="{{asset('assets/img/background.jpg')}}"; class="d-block w-100 carousel-fix" alt="produk-1">
-            </div>
-            <div class="carousel-item">
-              <img src="{{asset('assets/img/background-2.jpg')}}" class="d-block w-100 carousel-fix" alt="produk-2">
-            </div>
-            <div class="carousel-item">
+            @for ($i = 0; $i < count($galeri) ; $i++)
+            @if ($i == 0)
+              <div class="carousel-item active">
+                <img src={{ URL::asset("foto_toko/{$pengusaha->nama_toko}/{$galeri[$i]->gambar}") }} class="d-block w-100 carousel-fix" alt="produk-1">
+              </div>
+            @else
+              <div class="carousel-item">
+                <img src={{ URL::asset("foto_toko/{$pengusaha->nama_toko}/{$galeri[$i]->gambar}") }} class="d-block w-100 carousel-fix" alt="produk-2">
+              </div>
+            @endif
+            @endfor
+
+            {{-- <div class="carousel-item">
               <img src="{{asset('assets/img/background-3.jpg')}}" class="d-block w-100 carousel-fix" alt="produk-3">
-            </div>
+            </div> --}}
+
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -71,88 +85,61 @@
         </div>
 
 
-
+      {{-- Portofolio Pengusaha --}}
       <p class="tentang-penyablon">Tentang Penyablon</p>
 
-      <div class="detail-tentang-penyablon">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porttitor sit tellus phasellus amet, condimentum massa sagittis laoreet. In nec vitae interdum lectus. Etiam enim sed pharetra risus aenean aenean gravida nunc semper. Amet eget eget diam scelerisque.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porttitor sit tellus phasellus amet, condimentum massa sagittis laoreet. In nec vitae interdum lectus. Etiam enim sed pharetra risus aenean aenean gravida nunc semper. Amet eget eget diam scelerisque.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porttitor sit tellus phasellus amet, condimentum massa sagittis laoreet. In nec vitae interdum lectus. Etiam enim sed pharetra risus aenean aenean gravida nunc semper. Amet eget eget diam scelerisque.</p>
-          </div>
+        <div class="detail-tentang-penyablon">
+          <h2>Deskripsi singkat</h2>
+          <p>
+            {{ $portofolio->deskripsi }}
+          </p>
+
+          <h2>Kelebihan</h2>
+          <p>
+            {{ $portofolio->kelebihan }}
+          </p>
+
+          <h2>Kekurangan</h2>
+          <p>
+            {{ $portofolio->kekurangan }}
+          </p>
         </div>
+      </div>
 
 
+      {{-- Side bar --}}
       <div class="col-lg-4">
         <div class="row">
           <div class="col border-dark bg-light">
             <h5 class="panel-jasa-sablon">Jasa/Produk Sablon Kami</h5>
             <div class="accordion" id="accordionExample">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      [Nama Produk-1]
-                    </button>
-                  </h2>
-                </div>
 
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div class="card-body">
-                    <div class="row">
-                     <div class="col">
-                      <p><span>Harga mulai:</span></p>
-                     </div>
-                     <div class="col harga-profil">
-                      <p class="ml"><span>IDR50.000</span></p>
-                     </div>
+              @foreach ($produk as $pro)
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        {{$pro->nama_produk}}
+                      </button>
+                    </h2>
+                  </div>
+
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col">
+                          <p><span>Harga mulai:</span></p>
+                        </div>
+                        <div class="col harga-profil">
+                          <p class="ml"><span>IDR {{$pro->harga_produk}}</span></p>
+                        </div>
+                      </div>
+                      {{ $pro->deskripsi_produk }}
                     </div>
-                    [Deskripsi Produk-1] Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingTwo">
-                  <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      [Nama Produk-2]
-                    </button>
-                  </h2>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                  <div class="card-body">
-                  <div class="row">
-                     <div class="col">
-                      <p><span>Harga mulai:</span></p>
-                     </div>
-                     <div class="col harga-profil">
-                      <p class="ml"><span>IDR50.000</span></p>
-                     </div>
-                    </div>
-                    [Deskripsi Produk-2] Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor
                   </div>
                 </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingThree">
-                  <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      [Nama Produk-3]
-                    </button>
-                  </h2>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                  <div class="card-body">
-                  <div class="row">
-                     <div class="col">
-                      <p><span>Harga mulai:</span></p>
-                     </div>
-                     <div class="col harga-profil">
-                      <p class="ml"><span>IDR50.000</span></p>
-                     </div>
-                    </div>
-                    [Deskripsi Produk-3] Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor
-                  </div>
-                </div>
-              </div>
+              @endforeach
+
             </div>
 
             <a class="btn tombol-hubungi-penjual" href="https://www.whatsapp.com/?lang=en"> Hubungi Penyablon </a>
@@ -161,17 +148,9 @@
         </div>
       </div>
     </div>
-    </div>
-
- 
-
-    
-
-
-
 
   <!-- Footer -->
-  <div class="row footer justify-content-center">
+  <div class="row footer justify-content-center container mx-auto">
     <div class="col">
       <p><br><br></p>
       <p> Hubungi Cari Sablon</p>

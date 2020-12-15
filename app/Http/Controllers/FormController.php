@@ -89,7 +89,7 @@ class FormController extends Controller
             $path = public_path().'/foto_toko/'.$request->nama_toko;
 
             if (!File::exists($path)) {
-                File::makeDirectory($path);
+                File::makeDirectory($path,0777,true);
             }
 
             $image = Image::make($avatar);

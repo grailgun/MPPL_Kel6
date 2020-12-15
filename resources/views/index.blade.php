@@ -83,7 +83,7 @@
             <div class="card-body">
                 <h5 class="card-title">Kategori: A <br>Sablon A</h5>
                 <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
-                <a href="/profil" class="btn btn-danger">Kunjungi Profil</a>
+                <a href="/profil/1" class="btn btn-danger">Kunjungi Profil</a>
             </div>
             <div class="card-footer">
                 <small class="text-muted"> Mulai dari Rp.35.000</small>
@@ -97,7 +97,7 @@
             <div class="card-body">
                 <h5 class="card-title">Kategori: A <br>Sablon H</h5>
                 <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
-                <a href="/profil" class="btn btn-danger">Kunjungi Profil</a>
+                <a href="/profil/2" class="btn btn-danger">Kunjungi Profil</a>
             </div>
             <div class="card-footer">
                 <small class="text-muted"> Mulai dari Rp.38.000</small>
@@ -111,7 +111,7 @@
             <div class="card-body">
                 <h5 class="card-title">Kategori: A <br>Sablon F</h5>
                 <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
-                <a href="/profil" class="btn btn-danger">Kunjungi Profil</a>
+                <a href="/profil/3" class="btn btn-danger">Kunjungi Profil</a>
             </div>
             <div class="card-footer">
                 <small class="text-muted"> Mulai dari Rp.39.000</small>
@@ -125,7 +125,7 @@
             <div class="card-body">
                 <h5 class="card-title">Kategori: F <br>Sablon D</h5>
                 <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
-                <a href="/profil" class="btn btn-danger">Kunjungi Profil</a>
+                <a href="/profil/4" class="btn btn-danger">Kunjungi Profil</a>
             </div>
             <div class="card-footer">
                 <small class="text-muted"> Mulai dari Rp.38.000</small>

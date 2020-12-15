@@ -40,7 +40,7 @@
         <div class="media">
 
           @if(!empty($pengusaha->foto_toko))
-          <img src={{ URL::asset("foto_toko/{$pengusaha->nama_toko}/{$pengusaha->foto_toko}") }} class="mr-3 img-rounded" alt="foto-profil">
+            <img src={{ URL::asset("foto_toko/{$pengusaha->nama_toko}/{$pengusaha->foto_toko}") }} class="mr-3 img-rounded" alt="foto-profil">
           @else
             <img src="{{asset('assets/img/profile-photo-a.png')}}" class="mr-3 img-rounded" alt="foto-profil">
           @endif

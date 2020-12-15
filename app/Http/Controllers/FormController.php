@@ -220,6 +220,9 @@ class FormController extends Controller
             $galeriImg[] = $data;
         }    
         
+        if($pengusaha->nomor_telepon[0] == '0'){
+            $pengusaha->nomor_telepon = substr_replace($pengusaha->nomor_telepon, '62', 0, 1);
+        }
 
         $pengusaha = Pengusaha::create([
             'nama_toko' => $pengusaha->nama_toko,

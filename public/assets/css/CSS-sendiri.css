@@ -66,6 +66,11 @@
     font-weight: bold;
 }
 
+.lokasi-profil{
+    text-align: right;
+    font-weight: bold;
+}
+
 .card-body span{
     font-weight: bold;
 }

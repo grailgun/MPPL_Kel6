@@ -24,7 +24,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="navbar-nav ml-auto">
-                <a class="nav-item nav-link btn tombol-penjual" href="/formulir-1">Jadi Penjual</a>
+                <a class="nav-item nav-link btn btn-danger" href="/formulir-1">Jadi Penjual</a>
           </div>
         </div>
     </div>
@@ -39,12 +39,12 @@
   </div>
 
 <!-- Kolom Pencarian -->
-<div class="container-fluid">
+<div class="container-fluid justify-content-center">
 <form action="/" method="GET">
   <div class="row">
     <div class="col-lg-12 form-cari">
        <div class="form-row">
-          <div class="form-group col-md-3">
+          <!--<div class="form-group col-md-3">
             <label for="kategori"></label>
               <select id="kategori" class="form-control" input style="height:75px;">
                 <option selected value="">Pilih kategori</option>
@@ -52,16 +52,16 @@
                 <option>Standard</option>
                 <option>Premium</option>
               </select>
-          </div>
-          <div class="form-group col-md-3">
+          </div>-->
+          <div class="form-group col-md-4">
             <label for="lokasi"></label>
-            <input type="text" class="form-control" id="lokasi" placeholder="Masukkan lokasi" input style="height:75px;">
+            <input type="text" class="form-control" id="lokasi" placeholder="Masukkan lokasi" input style="height:75px; ">
           </div>
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-4">
             <label for="harga_minimal"></label>
-            <input type="number" class="form-control" id="harga_minimal" placeholder="Masukkan harga minimal" input style="height:75px;">
+            <input type="number" class="form-control" id="harga_minimal" placeholder="Masukkan harga minimal" input style="height:75px; ">
           </div>
-          <div class="form-group col-md-3">
+          <div class="form-group col-md-4">
             <label><br><br><br></label>
             <button type="submit" class="btn tombol-cari" input style="height:75px; width:250px;"> Cari </button>
           </div>
@@ -74,14 +74,22 @@
 
 
 
-  <h2 class="pl-3 my-3 mx-5"><u>Paling Banyak Dikunjungi</u></h2>
+  <h2 class="pl-3 my-3 mx-5"><u>Daftar Penyedia Jasa Sablon</u></h2>
 <!--1row contain 3 card-->
 <div class="row row-cols-1 row-cols-md-4 mx-5 panel">
-    <div class="col mb-4">
+<div class="col mb-4">
         <div class="card h-100 border-dark">
             <img src="{{asset('assets/img/gambar1.jpeg')}}" class="card-img-top" alt="gambar product">
             <div class="card-body">
-                <h5 class="card-title">Kategori: A <br>Sablon A</h5>
+                <h5 class="card-title">Creative Design</h5>
+                <div class="row">
+                    <div class="col">
+                        <p><span>Lokasi:</span></p>
+                    </div>
+                    <div class="col lokasi-profil">
+                        <p><span>Dramaga</span></p>
+                    </div>
+                 </div>
                 <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
                 <a href="/profil/1" class="btn btn-danger">Kunjungi Profil</a>
             </div>
@@ -95,7 +103,15 @@
         <div class="card h-100 border-dark">
             <img src="{{asset('assets/img/gambarkaos.jpeg')}}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Kategori: A <br>Sablon H</h5>
+            <h5 class="card-title">Afifah Print</h5> 
+              <div class="row">
+                  <div class="col">
+                    <p><span>Lokasi:</span></p>
+                  </div>
+                  <div class="col lokasi-profil">
+                   <p class="ml"><span>Leuwiliang</span></p>
+                  </div>
+               </div>
                 <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
                 <a href="/profil/2" class="btn btn-danger">Kunjungi Profil</a>
             </div>
@@ -109,7 +125,15 @@
         <div class="card h-100 border-dark">
             <img src="{{asset('assets/img/gambar3.jpeg')}}" class="card-img-top" alt="gambar 1">
             <div class="card-body">
-                <h5 class="card-title">Kategori: A <br>Sablon F</h5>
+            <h5 class="card-title">Digital Zipzip</h5>
+              <div class="row">
+                 <div class="col">
+                    <p><span>Lokasi:</span></p>
+                 </div>
+                  <div class="col lokasi-profil">
+                    <p class="ml"><span>Gunung Batu</span></p>
+                  </div>
+              </div>
                 <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
                 <a href="/profil/3" class="btn btn-danger">Kunjungi Profil</a>
             </div>
@@ -123,7 +147,103 @@
         <div class="card h-100 border-dark">
             <img src="{{asset('assets/img/gambar4.jpeg')}}" class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title">Kategori: F <br>Sablon D</h5>
+              <h5 class="card-title">Sablon Express</h5> 
+              <div class="row">
+                  <div class="col">
+                    <p><span>Lokasi:</span></p>
+                 </div>
+                 <div class="col lokasi-profil">
+                    <p class="ml"><span>Ciampea</span></p>
+                 </div>
+               </div>
+                <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
+                <a href="/profil/4" class="btn btn-danger">Kunjungi Profil</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> Mulai dari Rp.38.000</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col mb-4">
+        <div class="card h-100 border-dark">
+            <img src="{{asset('assets/img/gambar1.jpeg')}}" class="card-img-top" alt="gambar product">
+            <div class="card-body">
+                <h5 class="card-title">Creative Design</h5>
+                <div class="row">
+                    <div class="col">
+                        <p><span>Lokasi:</span></p>
+                    </div>
+                    <div class="col lokasi-profil">
+                        <p><span>Dramaga</span></p>
+                    </div>
+                 </div>
+                <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
+                <a href="/profil/1" class="btn btn-danger">Kunjungi Profil</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> Mulai dari Rp.35.000</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="col mb-4">
+        <div class="card h-100 border-dark">
+            <img src="{{asset('assets/img/gambarkaos.jpeg')}}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Afifah Print</h5> 
+              <div class="row">
+                  <div class="col">
+                    <p><span>Lokasi:</span></p>
+                  </div>
+                  <div class="col lokasi-profil">
+                   <p class="ml"><span>Leuwiliang</span></p>
+                  </div>
+               </div>
+                <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
+                <a href="/profil/2" class="btn btn-danger">Kunjungi Profil</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> Mulai dari Rp.38.000</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col mb-4">
+        <div class="card h-100 border-dark">
+            <img src="{{asset('assets/img/gambar3.jpeg')}}" class="card-img-top" alt="gambar 1">
+            <div class="card-body">
+            <h5 class="card-title">Digital Zipzip</h5>
+              <div class="row">
+                 <div class="col">
+                    <p><span>Lokasi:</span></p>
+                 </div>
+                  <div class="col lokasi-profil">
+                    <p class="ml"><span>Gunung Batu</span></p>
+                  </div>
+              </div>
+                <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
+                <a href="/profil/3" class="btn btn-danger">Kunjungi Profil</a>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted"> Mulai dari Rp.39.000</small>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col mb-4">
+        <div class="card h-100 border-dark">
+            <img src="{{asset('assets/img/gambar4.jpeg')}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Sablon Express</h5> 
+              <div class="row">
+                  <div class="col">
+                    <p><span>Lokasi:</span></p>
+                 </div>
+                 <div class="col lokasi-profil">
+                    <p class="ml"><span>Ciampea</span></p>
+                 </div>
+               </div>
                 <p class="card-text">Kami akan menerima semua design dengan hasil yang memuaskan.</p>
                 <a href="/profil/4" class="btn btn-danger">Kunjungi Profil</a>
             </div>

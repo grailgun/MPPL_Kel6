@@ -4,7 +4,7 @@
 <header>
     <div class="navbar" style="background:orange">
         <div class="container my-1">
-            <h1 class="navbar-brand d-flex" style="font-size: 1.8rem;"> <a href="/admin" class="text-white nav-link">Welcome {{$admin->name}}</a> </h1>
+            <h1 class="d-flex" style="font-size: 1.8rem;"> <a href="/admin" style="color: black">Welcome {{$admin->name}}</a> </h1>
             <h2 class="navbar-toggler">
                 @if($pengusaha->confirmed == 0)
                     <a href="/admin/approve/{{$pengusaha->id}}" class="btn-lg btn-success">Terima</a>
@@ -23,9 +23,9 @@
             
             <div class="d-flex mb-3">
                 @if(!empty($pengusaha->foto_toko))
-                    <img src={{ URL::asset("foto_toko/{$pengusaha->nama_toko}/{$pengusaha->foto_toko}") }} class="mr-3 img-rounded img-thumbnail" style="height: 100px" alt="foto-profil">
+                    <img src={{ URL::asset("foto_toko/{$pengusaha->nama_toko}/{$pengusaha->foto_toko}") }} class="mr-3 img-rounded img-thumbnail" style="height: 100px; width: 100px" alt="foto-profil">
                 @else
-                    <img src="{{asset('assets/img/profile-photo-a.png')}}" class="mr-3 img-rounded img-thumbnail" style="height: 100px" alt="foto-profil">
+                    <img src="{{asset('assets/img/profile-photo-a.png')}}" class="mr-3 img-rounded img-thumbnail" style="height: 100px; width: 100px" alt="foto-profil">
                 @endif
                 
                 <div>

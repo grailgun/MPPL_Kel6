@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 use App\Pengusaha;
+use App\Portofolio;
 use Illuminate\Http\Request;
 
 class PengusahaController extends Controller
 {
     public function index()
     {
-        $pengusaha = Pengusaha::All();
-
-        return view('dummy', compact('pengusaha'));
+        $pengusaha = Pengusaha::where('confirmed', 1)->paginate(6);
+        // $portofolio = Portofolio::All();
+        // dd($portofolio[0]->Galeries[0]->gambar);
+        return view('index', compact('pengusaha'));
     }
-
-
 
     public function profil($id)
     {

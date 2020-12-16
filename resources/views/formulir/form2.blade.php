@@ -29,17 +29,17 @@
             
             <div class="form-group">
                 <label>Deskripsi</label>
-                <textarea class="form-control" name="deskripsi">{{ empty($portofolio->deskripsi) ? old('deskripsi') : $portofolio->deskripsi }}</textarea>
+                <textarea style="height: 200px" class="form-control" name="deskripsi">{{ empty($portofolio->deskripsi) ? old('deskripsi') : $portofolio->deskripsi }}</textarea>
             </div>
             
             <div class="form-group">
                 <label>Kelebihan</label>
-                <textarea class="form-control" name="kelebihan">{{ empty($portofolio->kelebihan) ? old('kelebihan') : $portofolio->kelebihan }}</textarea>
+                <textarea style="height: 200px" class="form-control" name="kelebihan">{{ empty($portofolio->kelebihan) ? old('kelebihan') : $portofolio->kelebihan }}</textarea>
             </div>
         
             <div class="form-group">
                 <label>Kekurangan</label>
-                <textarea class="form-control" name="kekurangan">{{ empty($portofolio->kekurangan) ? old('kekurangan') : $portofolio->kekurangan }}</textarea>
+                <textarea style="height: 200px" class="form-control" name="kekurangan">{{ empty($portofolio->kekurangan) ? old('kekurangan') : $portofolio->kekurangan }}</textarea>
             </div>
             
             <table class="table table-bordered table-striped" id="product_table">

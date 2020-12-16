@@ -110,13 +110,15 @@ class FormController extends Controller
             'deskripsi' => 'required',
             'kelebihan' => 'required',
             'kekurangan' => 'required',
+            'galeri' => 'required',
+            'galeri.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         ]);
 
         $pengusaha = $request->session()->get('pengusaha');
         if($request->hasfile('galeri')){
-            $this->validate($request, [
-                'galeri.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:4096'
-            ]);
+            // $this->validate($request, [
+                
+            // ]);
 
             foreach($request->galeri as $image){
                 $basename = Str::random(20);
@@ -212,14 +214,16 @@ class FormController extends Controller
             $produk_data[] = $data;
         }
 
-        for ($i=0; $i < count($galeri[0]); $i++) { 
-            # code...
-            $data = array(
-                'gambar' => $galeri[0][$i]
-            );
-            $galeriImg[] = $data;
-        }    
-        
+        if(!empty($galeri)){
+            for ($i=0; $i < count($galeri[0]); $i++) { 
+                # code...
+                $data = array(
+                    'gambar' => $galeri[0][$i]
+                );
+                $galeriImg[] = $data;
+            }    
+        }
+
         if($pengusaha->nomor_telepon[0] == '0'){
             $pengusaha->nomor_telepon = substr_replace($pengusaha->nomor_telepon, '62', 0, 1);
         }
@@ -247,7 +251,10 @@ class FormController extends Controller
         ]);
 
         $pengusaha->Produk()->createMany($produk_data);
-        $pengusaha->portofolio->Galeries()->createMany($galeriImg);
+
+        if(!empty($galeri))
+            $pengusaha->portofolio->Galeries()->createMany($galeriImg);
+        
         $request->session()->flush();
         return redirect('/');
     }

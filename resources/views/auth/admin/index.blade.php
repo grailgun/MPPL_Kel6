@@ -5,7 +5,7 @@
 <header>
     <div class="navbar" style="background:orange">
         <div class="container my-1">
-            <h1 class="navbar-brand d-flex" style="font-size: 1.8rem"> Welcome {{$admin->name}} </h1>
+            <h1 class="d-flex" style="font-size: 1.8rem"> Welcome {{$admin->name}} </h1>
             <h2 class="navbar-toggler"><a href="/admin/logout" class="btn-lg btn-danger">Logout</a></h2>
         </div>
     </div>

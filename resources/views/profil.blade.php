@@ -91,7 +91,7 @@
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header" role="tab" id="headingOne{{$i}}">
-                        <a class="nav-link" data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne{{$i}}" aria-expanded="false" aria-controls="collapseOne{{$i}}">
+                        <a class="nav-link" style="color: orange" data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne{{$i}}" aria-expanded="false" aria-controls="collapseOne{{$i}}">
                           <h5 class="mb-0">
                               {{$produk[$i]->nama_produk}}
                           </h5>

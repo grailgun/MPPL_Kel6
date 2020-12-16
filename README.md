@@ -34,3 +34,7 @@ Project Cari Sablonan bertujuan untuk menjadi wadah dari berbagai jasa sablon di
 # Project Resources
 
 ## Class diagram
+![Class diagram aplikasi](https://github.com/grailgun/MPPL_Kel6/blob/master/Class%20Diagram%20Cari%20Sablonan.png "Class Diagram")
+
+## Figma
+[Desain Mockup Aplikasi Figma](https://www.figma.com/file/z4JOLuD91IjSom52blNpom/MPPL?node-id=0%3A1)

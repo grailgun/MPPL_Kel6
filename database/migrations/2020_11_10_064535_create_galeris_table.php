@@ -16,6 +16,7 @@ class CreateGalerisTable extends Migration
         Schema::create('galeri', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('portofolio_id');
+            $table->string('deskripsi_gambar', 100) -> default(0);
             
             $table->string('gambar');
 
